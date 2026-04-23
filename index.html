@@ -377,15 +377,23 @@ a { color:inherit; text-decoration:none; }
 .task {
   display:flex; align-items:flex-start; gap:14px;
   padding:14px 0; border-bottom:1px solid var(--w08);
+  cursor:pointer; transition:opacity .3s;
 }
 .task:last-child { border-bottom:none; }
+.task:hover .task-check { border-color:var(--gold); }
 .task-check {
   flex-shrink:0; width:22px; height:22px; border-radius:6px;
   border:1.5px solid var(--w30); margin-top:1px;
   display:flex; align-items:center; justify-content:center;
-  font-size:12px; color:transparent; transition:all .2s;
+  font-size:12px; color:transparent; transition:all .25s var(--ease);
 }
-.task.done .task-check { background:var(--gold); border-color:var(--gold); color:var(--bg-0); }
+.task.done { opacity:0.55; }
+.task.done .task-title { text-decoration:line-through; color:var(--w50); }
+.task.done .task-check {
+  background:var(--gold); border-color:var(--gold); color:var(--bg-0);
+  transform:scale(1.05);
+  box-shadow:0 0 14px rgba(212,165,60,0.4);
+}
 .task.done .task-check::before { content:'✓'; }
 .task-content { flex:1; }
 .task-title { font-size:14px; font-weight:600; color:var(--white); margin-bottom:2px; }
@@ -584,6 +592,80 @@ a { color:inherit; text-decoration:none; }
   letter-spacing:1px; text-transform:uppercase;
 }
 
+/* ============ MOBILE OPTIMIZATIONS ============ */
+@media(max-width:780px){
+  .wrap, .wrap-narrow { padding:0 20px; }
+  .topnav { padding:10px 16px; }
+  .topnav-inner { gap:12px; }
+  .topnav-brand span { font-size:14px; }
+  .topnav-logo { width:26px; height:26px; }
+  .topnav-mid { display:none; }
+  .topnav-cta { display:none; }
+  .hero { padding:96px 0 60px; min-height:auto; }
+  .hero-badge { font-size:10px; padding:6px 14px; letter-spacing:2px; margin-bottom:24px; }
+  .hero-grid { gap:36px; }
+  .hero-left h1 { font-size:42px; margin-bottom:18px; }
+  .hero-sub { font-size:15px; margin-bottom:24px; }
+  .hero-meta-pill { font-size:11px; padding:6px 12px; }
+  .btn { padding:12px 22px; font-size:11px; letter-spacing:1.2px; width:100%; justify-content:center; }
+  .hero-cta { flex-direction:column; gap:10px; }
+  .transformation-card { padding:24px; }
+  .tc-stage-value { font-size:36px; }
+  .kpi-section, .diag-section, .plano-section, .sessoes-section, .insights-section, .agenda-section, .nb-section { padding:64px 0; }
+  .section-head { margin-bottom:36px; }
+  .section-head h2 { font-size:30px; }
+  .section-head p { font-size:14px; }
+  .kpi-card { padding:20px 18px; }
+  .kpi-value { font-size:32px; }
+  .kpi-label { font-size:10px; }
+  .diag-row { grid-template-columns:1fr 70px 32px; gap:8px; padding:12px 0; }
+  .diag-name { font-size:13px; }
+  .diag-bar { width:auto; }
+  .diag-score { font-size:18px; }
+  .fase-head { padding:18px 20px; gap:14px; }
+  .fase-num { width:38px; height:38px; font-size:18px; }
+  .fase-title { font-size:18px; }
+  .fase-when { font-size:10px; letter-spacing:0.8px; }
+  .fase-toggle { width:30px; height:30px; font-size:16px; }
+  .fase-body-inner { padding:0 20px 24px; }
+  .fase-desc { font-size:14px; margin:18px 0 20px; }
+  .task { padding:12px 0; gap:11px; }
+  .task-title { font-size:13px; }
+  .task-desc { font-size:12px; }
+  .sessao-head { grid-template-columns:auto 1fr; gap:12px; padding:18px 20px; }
+  .sessao-num { font-size:20px; width:32px; }
+  .sessao-title { font-size:14px; }
+  .sessao-date { grid-column:1/-1; padding-left:44px; font-size:11px; }
+  .sessao-status { grid-column:1/-1; justify-self:start; margin-left:44px; font-size:9px; padding:4px 10px; }
+  .sessao-body-inner { padding:0 20px 24px; }
+  .sessao-block { padding:18px 0; }
+  .sessao-block p, .sessao-block ul li { font-size:13px; }
+  .insight-card { padding:24px; }
+  .insight-card.featured { padding:40px 24px; }
+  .insight-text { font-size:18px; }
+  .insight-card.featured .insight-text { font-size:22px; }
+  .evento { grid-template-columns:60px 1fr; gap:14px; padding:18px 18px; }
+  .evento-data { padding-right:14px; }
+  .evento-dia { font-size:28px; }
+  .evento-info-titulo { font-size:13px; }
+  .evento-info-desc { font-size:11px; }
+  .evento-tag { grid-column:1/-1; justify-self:start; margin-left:74px; font-size:9px; padding:4px 10px; }
+  .nb-card { padding:28px 22px; }
+  .nb-title { font-size:20px; }
+  .mentores-section { min-height:360px; padding:80px 0; }
+  .mentores-content h2 { font-size:32px; }
+  .footer { padding:40px 0 28px; }
+  .footer-logo { width:48px; height:48px; }
+  .footer-info { font-size:12px; }
+}
+
+@media(max-width:420px){
+  .hero-left h1 { font-size:36px; }
+  .tc-stage-value { font-size:30px; }
+  .section-head h2 { font-size:26px; }
+  .kpi-value { font-size:28px; }
+}
+
 @media print {
   body { background:#fff; color:#000; }
   .topnav, .insight-card::before, .mentores-section::before { display:none; }
@@ -728,10 +810,10 @@ a { color:inherit; text-decoration:none; }
       <div class="fase-body"><div class="fase-body-inner">
         <p class="fase-desc">Centralizar todo o atendimento particular numa clínica dedicada. Rogério Amaral já está alinhado e contando contigo. Esta é a porta para o ticket maior.</p>
         <div class="tasks">
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Confirmar data de início com Rogério</div><div class="task-desc">Idealmente 01/05/2026, com pacto explícito.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Compartilhar Instagram da Regen no grupo CPP</div><div class="task-desc">Para Patrick e Matheus avaliarem o posicionamento da clínica.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Alinhar consulta inicial em R$ 800</div><div class="task-desc">Valor combinado, com possibilidade de evolução.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Direcionar 100% dos particulares para a Regen</div><div class="task-desc">Convênio segue no Bench Care · particular fica concentrado num só lugar.</div></div></div>
+          <div class="task" data-task-id="f1-t1"><div class="task-check"></div><div class="task-content"><div class="task-title">Confirmar data de início com Rogério</div><div class="task-desc">Idealmente 01/05/2026, com pacto explícito.</div></div></div>
+          <div class="task" data-task-id="f1-t2"><div class="task-check"></div><div class="task-content"><div class="task-title">Compartilhar Instagram da Regen no grupo CPP</div><div class="task-desc">Para Patrick e Matheus avaliarem o posicionamento da clínica.</div></div></div>
+          <div class="task" data-task-id="f1-t3"><div class="task-check"></div><div class="task-content"><div class="task-title">Alinhar consulta inicial em R$ 800</div><div class="task-desc">Valor combinado, com possibilidade de evolução.</div></div></div>
+          <div class="task" data-task-id="f1-t4"><div class="task-check"></div><div class="task-content"><div class="task-title">Direcionar 100% dos particulares para a Regen</div><div class="task-desc">Convênio segue no Bench Care · particular fica concentrado num só lugar.</div></div></div>
         </div>
       </div></div>
     </div>
@@ -745,10 +827,10 @@ a { color:inherit; text-decoration:none; }
       <div class="fase-body"><div class="fase-body-inner">
         <p class="fase-desc">A secretária particular libera você do WhatsApp pessoal e cria o canal profissional de atendimento. É o pilar que sustenta tudo que vem depois.</p>
         <div class="tasks">
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Receber script de contratação + teste comportamental</div><div class="task-desc">Patrick envia o material padrão da mentoria.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Buscar candidatas (indicação + post no Instagram)</div><div class="task-desc">Estratégia que costuma trazer 30-50 indicações qualificadas.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Aplicar teste de perfil comportamental</div><div class="task-desc">Perfil ideal: influente + analítica.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Patrick + Matheus analisam resultado em conjunto</div><div class="task-desc">Decisão alinhada antes da contratação.</div></div></div>
+          <div class="task" data-task-id="f2-t1"><div class="task-check"></div><div class="task-content"><div class="task-title">Receber script de contratação + teste comportamental</div><div class="task-desc">Patrick envia o material padrão da mentoria.</div></div></div>
+          <div class="task" data-task-id="f2-t2"><div class="task-check"></div><div class="task-content"><div class="task-title">Buscar candidatas (indicação + post no Instagram)</div><div class="task-desc">Estratégia que costuma trazer 30-50 indicações qualificadas.</div></div></div>
+          <div class="task" data-task-id="f2-t3"><div class="task-check"></div><div class="task-content"><div class="task-title">Aplicar teste de perfil comportamental</div><div class="task-desc">Perfil ideal: influente + analítica.</div></div></div>
+          <div class="task" data-task-id="f2-t4"><div class="task-check"></div><div class="task-content"><div class="task-title">Patrick + Matheus analisam resultado em conjunto</div><div class="task-desc">Decisão alinhada antes da contratação.</div></div></div>
         </div>
       </div></div>
     </div>
@@ -762,9 +844,9 @@ a { color:inherit; text-decoration:none; }
       <div class="fase-body"><div class="fase-body-inner">
         <p class="fase-desc">Liberar 1.5 dia da semana para focar no particular, na Regen e na sua presença digital. Cristianópolis e Estado seguem por enquanto pela baixa carga real.</p>
         <div class="tasks">
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Comunicar saída do UGOL formalmente</div><div class="task-desc">Aviso respeitoso, sem queimar pontes.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Manter Cristianópolis e Estado/Regulação</div><div class="task-desc">Renda fixa de baixa carga garante tranquilidade durante a transição.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Reorganizar agenda semanal pós-saída</div><div class="task-desc">Bloquear janelas para conteúdo, estudo e descanso.</div></div></div>
+          <div class="task" data-task-id="f3-t1"><div class="task-check"></div><div class="task-content"><div class="task-title">Comunicar saída do UGOL formalmente</div><div class="task-desc">Aviso respeitoso, sem queimar pontes.</div></div></div>
+          <div class="task" data-task-id="f3-t2"><div class="task-check"></div><div class="task-content"><div class="task-title">Manter Cristianópolis e Estado/Regulação</div><div class="task-desc">Renda fixa de baixa carga garante tranquilidade durante a transição.</div></div></div>
+          <div class="task" data-task-id="f3-t3"><div class="task-check"></div><div class="task-content"><div class="task-title">Reorganizar agenda semanal pós-saída</div><div class="task-desc">Bloquear janelas para conteúdo, estudo e descanso.</div></div></div>
         </div>
       </div></div>
     </div>
@@ -778,10 +860,10 @@ a { color:inherit; text-decoration:none; }
       <div class="fase-body"><div class="fase-body-inner">
         <p class="fase-desc">Você já desvia convênio → particular naturalmente. O script formal multiplica o resultado e dá segurança para subir o ticket cirúrgico de forma escalonada.</p>
         <div class="tasks">
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Participar da aula coletiva sexta-feira 18h</div><div class="task-desc">Tema: desviar convênio para particular. Case Leonidas.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Subir honorário cirúrgico para R$ 8k imediato</div><div class="task-desc">Próxima conversa de cirurgia já com o novo valor.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Reportar primeiro paciente desviado no grupo</div><div class="task-desc">Compartilhar o resultado com Patrick, Matheus e a turma.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Estruturar proposta para R$ 25-30k na Regen</div><div class="task-desc">Paciente da Regen já vem buscando particular — ticket maior é natural.</div></div></div>
+          <div class="task" data-task-id="f4-t1"><div class="task-check"></div><div class="task-content"><div class="task-title">Participar da aula coletiva sexta-feira 18h</div><div class="task-desc">Tema: desviar convênio para particular. Case Leonidas.</div></div></div>
+          <div class="task" data-task-id="f4-t2"><div class="task-check"></div><div class="task-content"><div class="task-title">Subir honorário cirúrgico para R$ 8k imediato</div><div class="task-desc">Próxima conversa de cirurgia já com o novo valor.</div></div></div>
+          <div class="task" data-task-id="f4-t3"><div class="task-check"></div><div class="task-content"><div class="task-title">Reportar primeiro paciente desviado no grupo</div><div class="task-desc">Compartilhar o resultado com Patrick, Matheus e a turma.</div></div></div>
+          <div class="task" data-task-id="f4-t4"><div class="task-check"></div><div class="task-content"><div class="task-title">Estruturar proposta para R$ 25-30k na Regen</div><div class="task-desc">Paciente da Regen já vem buscando particular — ticket maior é natural.</div></div></div>
         </div>
       </div></div>
     </div>
@@ -795,10 +877,10 @@ a { color:inherit; text-decoration:none; }
       <div class="fase-body"><div class="fase-body-inner">
         <p class="fase-desc">Você tem facilidade natural com câmera (raro entre cirurgiões). É hora de aparecer com método: casos cirúrgicos, autoridade, prova social. Não é virar influencer — é ser encontrável pelos pacientes que precisam de você.</p>
         <div class="tasks">
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Atualizar bio + foto profissional</div><div class="task-desc">Cirurgião de quadril, Goiânia, CRM. Direto e com autoridade.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Gravar 2 reels por semana com qualidade</div><div class="task-desc">Casos de quadril, antes/depois, dicas profissionais.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Coletar 5 depoimentos de pacientes operados</div><div class="task-desc">Curtos, com o celular mesmo. Prova social vale ouro.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Iniciar tráfego pago modesto</div><div class="task-desc">Após estrutura rodando: secretária + Instagram + leads convertendo.</div></div></div>
+          <div class="task" data-task-id="f5-t1"><div class="task-check"></div><div class="task-content"><div class="task-title">Atualizar bio + foto profissional</div><div class="task-desc">Cirurgião de quadril, Goiânia, CRM. Direto e com autoridade.</div></div></div>
+          <div class="task" data-task-id="f5-t2"><div class="task-check"></div><div class="task-content"><div class="task-title">Gravar 2 reels por semana com qualidade</div><div class="task-desc">Casos de quadril, antes/depois, dicas profissionais.</div></div></div>
+          <div class="task" data-task-id="f5-t3"><div class="task-check"></div><div class="task-content"><div class="task-title">Coletar 5 depoimentos de pacientes operados</div><div class="task-desc">Curtos, com o celular mesmo. Prova social vale ouro.</div></div></div>
+          <div class="task" data-task-id="f5-t4"><div class="task-check"></div><div class="task-content"><div class="task-title">Iniciar tráfego pago modesto</div><div class="task-desc">Após estrutura rodando: secretária + Instagram + leads convertendo.</div></div></div>
         </div>
       </div></div>
     </div>
@@ -812,10 +894,10 @@ a { color:inherit; text-decoration:none; }
       <div class="fase-body"><div class="fase-body-inner">
         <p class="fase-desc">Mês 3 da mentoria. Imersão presencial do Grupo Acelerador. Bater os primeiros R$ 100k/mês e preparar o terreno para os R$ 120k em outubro.</p>
         <div class="tasks">
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Bater R$ 100k/mês (mês 3)</div><div class="task-desc">UGOL fora + Regen ativa + 4-5 cirurgias particulares com novo ticket.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Participar da Imersão 06-07/Ago</div><div class="task-desc">Grupo Acelerador · 600 cirurgiões · networking + casos avançados.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Avaliar Cristianópolis (terceirizar ou abandonar)</div><div class="task-desc">Se o particular já compensar, simplifica a operação.</div></div></div>
-          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Bater R$ 120k/mês (mês 6)</div><div class="task-desc">Regen consolidada · marketing gerando leads · equipe estruturada.</div></div></div>
+          <div class="task" data-task-id="f6-t1"><div class="task-check"></div><div class="task-content"><div class="task-title">Bater R$ 100k/mês (mês 3)</div><div class="task-desc">UGOL fora + Regen ativa + 4-5 cirurgias particulares com novo ticket.</div></div></div>
+          <div class="task" data-task-id="f6-t2"><div class="task-check"></div><div class="task-content"><div class="task-title">Participar da Imersão 06-07/Ago</div><div class="task-desc">Grupo Acelerador · 600 cirurgiões · networking + casos avançados.</div></div></div>
+          <div class="task" data-task-id="f6-t3"><div class="task-check"></div><div class="task-content"><div class="task-title">Avaliar Cristianópolis (terceirizar ou abandonar)</div><div class="task-desc">Se o particular já compensar, simplifica a operação.</div></div></div>
+          <div class="task" data-task-id="f6-t4"><div class="task-check"></div><div class="task-content"><div class="task-title">Bater R$ 120k/mês (mês 6)</div><div class="task-desc">Regen consolidada · marketing gerando leads · equipe estruturada.</div></div></div>
         </div>
       </div></div>
     </div>
@@ -1047,10 +1129,49 @@ a { color:inherit; text-decoration:none; }
   <div class="footer-brand">Cirurgião Particular Premium</div>
   <div class="footer-info">
     <div>Mapa do Dr. Danilo Lopes Coelho · CPP</div>
-    <div>Patrick Suyti · Dr. Matheus Jeronimo · 2026</div>
+    <div>Dr. Matheus Jeronimo · Patrick Suyti · 2026</div>
   </div>
-  <div class="footer-update">Atualizado em 23/04/2026 · próxima revisão após Reunião 1</div>
+  <div class="footer-update" id="taskCounter">Atualizado em 23/04/2026</div>
 </footer>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'cpp-mapa-danilo-tasks-v1';
+  const tasks = document.querySelectorAll('.task[data-task-id]');
+  const counter = document.getElementById('taskCounter');
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+    catch(e) { return {}; }
+  }
+  function saveState(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
+  }
+  function updateCounter() {
+    const total = tasks.length;
+    const done = document.querySelectorAll('.task.done').length;
+    if (counter) {
+      const pct = total > 0 ? Math.round((done/total)*100) : 0;
+      counter.innerHTML = '<strong style="color:var(--gold);">' + done + '</strong> de ' + total + ' tarefas concluidas · ' + pct + '%';
+    }
+  }
+
+  const state = loadState();
+  tasks.forEach(t => {
+    const id = t.getAttribute('data-task-id');
+    if (state[id]) t.classList.add('done');
+    t.addEventListener('click', function(e){
+      e.stopPropagation();
+      this.classList.toggle('done');
+      const newState = loadState();
+      newState[id] = this.classList.contains('done');
+      saveState(newState);
+      updateCounter();
+    });
+  });
+  updateCounter();
+})();
+</script>
 
 </body>
 </html>
