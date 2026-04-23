@@ -4,7 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dr. Danilo Lopes Coelho — Mentoria CPP</title>
-<meta name="description" content="Mapa de transformacao Dr. Danilo Lopes Coelho — Mentoria Cirurgiao Particular Premium">
+<meta name="description" content="Mapa de transformação Dr. Danilo Lopes Coelho · Cirurgião Particular Premium · Mentoria CPP com Patrick Suyti e Dr. Matheus Jeronimo.">
+<meta name="theme-color" content="#D4A53C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mapa CPP">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dr. Danilo Lopes Coelho — Mentoria CPP">
+<meta property="og:description" content="Mapa de transformação · Cirurgião Particular Premium">
+<meta property="og:image" content="https://raw.githubusercontent.com/pofazze/cpp-brand-assets/main/cpp-mockup.png">
+<meta property="og:url" content="https://pofazze.github.io/mapa-danilo/">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/pofazze/cpp-brand-assets/main/cpp-mockup.png">
+
+<!-- Favicon + PWA -->
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/pofazze/cpp-brand-assets/main/cpp-logo.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/pofazze/cpp-brand-assets/main/cpp-logo.png">
+<link rel="manifest" href="manifest.json">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -41,7 +62,7 @@
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+html { scroll-behavior:smooth; scroll-padding-top:80px; }
 body {
   font-family:'Inter',-apple-system,sans-serif;
   background:var(--bg-0);
@@ -50,7 +71,202 @@ body {
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
   font-feature-settings:'cv11','ss01','ss03';
+  position:relative;
 }
+/* ============ MARCA D'AGUA SUTIL DO LOGO ============ */
+body::before {
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:url('https://raw.githubusercontent.com/pofazze/cpp-brand-assets/main/cpp-logo.png') center/min(60vw,500px) no-repeat;
+  opacity:0.018;
+  filter:brightness(2);
+}
+
+/* ============ BARRA DE PROGRESSO TOPO ============ */
+.progress-bar-top {
+  position:fixed; top:0; left:0; right:0;
+  height:3px; background:var(--w08);
+  z-index:200; pointer-events:none;
+}
+.progress-bar-fill {
+  height:100%; width:0%;
+  background:linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-2));
+  transition:width .6s var(--ease);
+  box-shadow:0 0 12px rgba(212,165,60,0.6);
+}
+
+/* ============ SIDE NAV (sticky desktop) ============ */
+.sidenav {
+  position:fixed; right:24px; top:50%; transform:translateY(-50%);
+  z-index:90; display:none;
+  flex-direction:column; gap:14px;
+  padding:18px 14px;
+  background:rgba(15,13,11,0.7);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border:1px solid var(--w08);
+  border-radius:100px;
+}
+@media(min-width:1100px){.sidenav{display:flex;}}
+.sidenav a {
+  width:10px; height:10px; border-radius:50%;
+  background:var(--w15); transition:all .3s var(--ease);
+  position:relative;
+}
+.sidenav a:hover { background:var(--gold); transform:scale(1.4); }
+.sidenav a.active {
+  background:var(--gold);
+  box-shadow:0 0 12px rgba(212,165,60,0.6);
+}
+.sidenav a::before {
+  content:attr(data-label);
+  position:absolute; right:24px; top:50%;
+  transform:translateY(-50%) translateX(8px);
+  background:var(--bg-2); border:1px solid var(--w15);
+  padding:6px 14px; border-radius:100px;
+  font-size:11px; font-weight:600; color:var(--white);
+  letter-spacing:1px; text-transform:uppercase;
+  white-space:nowrap; opacity:0; pointer-events:none;
+  transition:all .3s var(--ease);
+}
+.sidenav a:hover::before { opacity:1; transform:translateY(-50%) translateX(0); }
+
+/* ============ WHATSAPP FLOAT ============ */
+.wa-float {
+  position:fixed; bottom:24px; right:24px;
+  z-index:90;
+  display:flex; align-items:center; gap:12px;
+  padding:14px 22px 14px 14px;
+  background:linear-gradient(135deg, #25D366, #128C7E);
+  color:#fff; border-radius:100px;
+  box-shadow:0 10px 30px rgba(37,211,102,0.4);
+  font-family:'Inter',sans-serif; font-weight:600; font-size:13px;
+  letter-spacing:0.5px;
+  transition:all .3s var(--ease);
+  cursor:pointer; text-decoration:none;
+}
+.wa-float:hover { transform:translateY(-3px); box-shadow:0 14px 40px rgba(37,211,102,0.55); }
+.wa-icon {
+  width:40px; height:40px; border-radius:50%;
+  background:rgba(255,255,255,0.18);
+  display:flex; align-items:center; justify-content:center;
+}
+.wa-icon svg { width:22px; height:22px; fill:#fff; }
+.wa-label-mobile { display:none; }
+@media(max-width:540px){
+  .wa-float { padding:12px; gap:0; bottom:18px; right:18px; }
+  .wa-label { display:none; }
+  .wa-icon { width:30px; height:30px; }
+  .wa-icon svg { width:18px; height:18px; }
+}
+
+/* ============ BADGE DE CONQUISTA ============ */
+.badge-conquest {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px 10px;
+  background:var(--gold-bg);
+  border:1px solid var(--gold-border);
+  border-radius:100px;
+  font-size:10px; font-weight:600;
+  color:var(--gold-2); letter-spacing:1px; text-transform:uppercase;
+}
+.badge-conquest::before { content:'★'; font-size:11px; color:var(--gold); }
+
+/* ============ AUDIO PLAYER ============ */
+.audio-player {
+  margin-top:18px;
+  padding:18px 22px;
+  background:linear-gradient(135deg, var(--bg-1), var(--bg-2));
+  border:1px solid var(--gold-border);
+  border-radius:var(--r-md);
+  display:flex; align-items:center; gap:14px;
+}
+.audio-player audio {
+  flex:1; height:36px; max-width:100%;
+  filter:invert(1) hue-rotate(180deg) saturate(0.5);
+}
+.audio-info {
+  display:flex; flex-direction:column; gap:2px;
+}
+.audio-info-label {
+  font-size:10px; text-transform:uppercase; letter-spacing:2px;
+  color:var(--gold-2); font-weight:600;
+}
+.audio-info-meta { font-size:11px; color:var(--w50); }
+@media(max-width:520px){
+  .audio-player { flex-direction:column; align-items:stretch; gap:10px; padding:14px 16px; }
+}
+
+/* ============ MATERIAL EXCLUSIVO ============ */
+.material-section { padding:100px 0; background:var(--bg-1); }
+.material-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:40px;
+}
+@media(max-width:880px){.material-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.material-grid{grid-template-columns:1fr;}}
+.material-card {
+  padding:32px 24px;
+  background:var(--bg-2); border:1px solid var(--w08);
+  border-radius:var(--r-md);
+  display:flex; flex-direction:column; gap:12px;
+  transition:all .3s var(--ease);
+  position:relative; overflow:hidden;
+}
+.material-card.locked { opacity:0.55; }
+.material-card:hover { border-color:var(--gold-border-strong); transform:translateY(-4px); }
+.material-card-icon {
+  width:48px; height:48px; border-radius:var(--r-sm);
+  background:var(--gold-bg); border:1px solid var(--gold-border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; color:var(--gold);
+}
+.material-card-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px; font-weight:600; color:var(--white);
+  line-height:1.2;
+}
+.material-card-desc { font-size:13px; color:var(--w70); line-height:1.6; }
+.material-card-cta {
+  margin-top:auto; padding-top:14px;
+  font-size:11px; text-transform:uppercase; letter-spacing:1.5px;
+  color:var(--gold-2); font-weight:700;
+  display:flex; align-items:center; gap:6px;
+}
+.material-card-cta::after { content:'→'; transition:transform .3s; }
+.material-card:hover .material-card-cta::after { transform:translateX(4px); }
+
+/* ============ PWA INSTALL HINT ============ */
+.install-hint {
+  position:fixed; bottom:90px; left:50%; transform:translateX(-50%);
+  padding:14px 22px;
+  background:var(--bg-2);
+  border:1px solid var(--gold-border-strong);
+  border-radius:100px;
+  font-size:12px; color:var(--white);
+  display:none; align-items:center; gap:10px;
+  z-index:80;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+.install-hint.show { display:flex; }
+.install-hint button {
+  background:var(--gold); color:var(--bg-0);
+  border:none; padding:6px 14px; border-radius:100px;
+  font-size:11px; font-weight:700; cursor:pointer;
+  text-transform:uppercase; letter-spacing:1px;
+}
+.install-hint .close-x {
+  background:transparent; color:var(--w50);
+  font-size:16px; padding:2px 8px;
+}
+
+/* ============ REVEAL ANIMATION ============ */
+.reveal { opacity:0; transform:translateY(36px); transition:all .9s var(--ease); }
+.reveal.in { opacity:1; transform:translateY(0); }
+.reveal-stagger > * { opacity:0; transform:translateY(20px); transition:all .7s var(--ease); }
+.reveal-stagger.in > *:nth-child(1) { transition-delay:.05s; opacity:1; transform:none; }
+.reveal-stagger.in > *:nth-child(2) { transition-delay:.15s; opacity:1; transform:none; }
+.reveal-stagger.in > *:nth-child(3) { transition-delay:.25s; opacity:1; transform:none; }
+.reveal-stagger.in > *:nth-child(4) { transition-delay:.35s; opacity:1; transform:none; }
 h1,h2,h3,h4,h5 { font-family:'Cormorant Garamond',serif; letter-spacing:-0.02em; line-height:1.1; }
 img { display:block; max-width:100%; }
 a { color:inherit; text-decoration:none; }
@@ -674,6 +890,35 @@ a { color:inherit; text-decoration:none; }
 </head>
 <body>
 
+<!-- Barra de progresso fixa -->
+<div class="progress-bar-top"><div class="progress-bar-fill" id="progBarFill"></div></div>
+
+<!-- Side nav (desktop) -->
+<nav class="sidenav" id="sidenav">
+  <a href="#kpis" data-label="Visão Geral" data-target="kpis"></a>
+  <a href="#diagnostico" data-label="Diagnóstico" data-target="diagnostico"></a>
+  <a href="#plano" data-label="Plano" data-target="plano"></a>
+  <a href="#sessoes" data-label="Sessões" data-target="sessoes"></a>
+  <a href="#agenda" data-label="Agenda" data-target="agenda"></a>
+  <a href="#material" data-label="Material" data-target="material"></a>
+  <a href="#mentores" data-label="Mentores" data-target="mentores"></a>
+</nav>
+
+<!-- WhatsApp flutuante -->
+<a class="wa-float" href="https://wa.me/5583993527775?text=Oi%20Stephany%2C%20sou%20Dr.%20Danilo%20Lopes%20Coelho%2C%20mentorado%20CPP.%20Preciso%20de%20ajuda%20com..." target="_blank" rel="noopener">
+  <span class="wa-icon">
+    <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.9 1.1-.1.2-.3.2-.6.1-.3-.1-1.2-.4-2.4-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.4-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.7 4.3 3.8.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.3 1.3 4.7L2 22l5.3-1.3c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.5 0-2.9-.4-4.1-1.1l-.3-.2-3.2.8.8-3.2-.2-.3C4.4 14.9 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+  </span>
+  <span class="wa-label">Falar com a equipe</span>
+</a>
+
+<!-- Hint instalação PWA -->
+<div class="install-hint" id="installHint">
+  <span>Instala como app no seu celular</span>
+  <button id="installBtn">Instalar</button>
+  <button class="close-x" onclick="document.getElementById('installHint').classList.remove('show')">×</button>
+</div>
+
 <nav class="topnav">
   <div class="topnav-inner">
     <div class="topnav-brand">
@@ -736,7 +981,7 @@ a { color:inherit; text-decoration:none; }
   </div>
 </section>
 
-<section class="kpi-section">
+<section class="kpi-section" id="kpis">
   <div class="wrap">
     <div class="kpi-head">
       <div class="label">Visão Geral</div>
@@ -745,17 +990,17 @@ a { color:inherit; text-decoration:none; }
     <div class="kpi-grid">
       <div class="kpi-card">
         <div class="kpi-label">Faturamento Atual</div>
-        <div class="kpi-value">R$ 65k</div>
+        <div class="kpi-value" data-count="65" data-prefix="R$ " data-suffix="k">R$ 65k</div>
         <div class="kpi-trend">por mês · linha de base</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">Meta 3 Meses</div>
-        <div class="kpi-value gold">R$ 100k</div>
+        <div class="kpi-value gold" data-count="100" data-prefix="R$ " data-suffix="k">R$ 100k</div>
         <div class="kpi-trend up">+54% vs hoje</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">Meta 6 Meses</div>
-        <div class="kpi-value gold">R$ 120k</div>
+        <div class="kpi-value gold" data-count="120" data-prefix="R$ " data-suffix="k">R$ 120k</div>
         <div class="kpi-trend up">+85% vs hoje</div>
       </div>
       <div class="kpi-card">
@@ -767,7 +1012,7 @@ a { color:inherit; text-decoration:none; }
   </div>
 </section>
 
-<section class="diag-section">
+<section class="diag-section" id="diagnostico">
   <div class="wrap-narrow">
     <div class="section-head">
       <div class="label">Diagnóstico · Sessão 01</div>
@@ -790,7 +1035,7 @@ a { color:inherit; text-decoration:none; }
   </div>
 </section>
 
-<section class="plano-section" id="plano">
+<section class="plano-section" id="plano" data-section>
   <div class="wrap-narrow">
     <div class="section-head">
       <div class="label">Plano de Transformação</div>
@@ -904,7 +1149,7 @@ a { color:inherit; text-decoration:none; }
   </div>
 </section>
 
-<section class="sessoes-section" id="sessoes">
+<section class="sessoes-section" id="sessoes" data-section>
   <div class="wrap-narrow">
     <div class="section-head">
       <div class="label">Histórico de Sessões</div>
@@ -944,7 +1189,16 @@ a { color:inherit; text-decoration:none; }
             <li>Reportar primeiro paciente desviado para particular semana que vem</li>
           </ul>
         </div>
-        <a class="sessao-audio">Áudio da sessão (46 min)</a>
+        <div class="audio-player">
+          <div class="audio-info">
+            <div class="audio-info-label">Áudio da sessão</div>
+            <div class="audio-info-meta">46 minutos · 22 abril 2026</div>
+          </div>
+          <audio controls preload="none" style="width:100%;">
+            <source src="https://example.com/audio-onboarding-danilo.m4a" type="audio/mp4">
+            Seu navegador não suporta áudio HTML5.
+          </audio>
+        </div>
       </div></div>
     </div>
 
@@ -1005,7 +1259,38 @@ a { color:inherit; text-decoration:none; }
   </div>
 </section>
 
-<section class="agenda-section" id="agenda">
+<section class="material-section" id="material" data-section>
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <div class="label">Material Exclusivo</div>
+      <h2>Sua área de membros</h2>
+      <p>Aulas gravadas, scripts, planilhas e bônus exclusivos da Mentoria CPP. Acesso 24/7 pela plataforma MemberKit.</p>
+    </div>
+
+    <div class="material-grid">
+      <a class="material-card" href="#" target="_blank" rel="noopener">
+        <div class="material-card-icon">▶</div>
+        <div class="material-card-title">Aulas gravadas</div>
+        <div class="material-card-desc">Biblioteca completa de aulas da mentoria. Vendas, posicionamento, mentalidade premium e mais.</div>
+        <div class="material-card-cta">Acessar MemberKit</div>
+      </a>
+      <a class="material-card locked" href="#">
+        <div class="material-card-icon">📋</div>
+        <div class="material-card-title">Scripts comerciais</div>
+        <div class="material-card-desc">Modelos prontos de conversa para desviar convênio para particular, fechar cirurgia, lidar com objeções.</div>
+        <div class="material-card-cta">Em breve</div>
+      </a>
+      <a class="material-card locked" href="#">
+        <div class="material-card-icon">📊</div>
+        <div class="material-card-title">Planilhas e templates</div>
+        <div class="material-card-desc">Modelo de contrato de acompanhamento, planilha de faturamento, fluxo de caixa do consultório.</div>
+        <div class="material-card-cta">Em breve</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="agenda-section" id="agenda" data-section>
   <div class="wrap-narrow">
     <div class="section-head">
       <div class="label">Agenda da Mentoria</div>
@@ -1117,7 +1402,7 @@ a { color:inherit; text-decoration:none; }
   </div>
 </section>
 
-<section class="mentores-section">
+<section class="mentores-section" id="mentores" data-section>
   <div class="mentores-content wrap">
     <div class="mentores-label">Seus mentores</div>
     <h2><span class="gold">Dr. Matheus Jeronimo</span> · Patrick Suyti</h2>
@@ -1136,24 +1421,28 @@ a { color:inherit; text-decoration:none; }
 
 <script>
 (function(){
+  /* ===== TAREFAS COM PERSISTENCIA ===== */
   const STORAGE_KEY = 'cpp-mapa-danilo-tasks-v1';
   const tasks = document.querySelectorAll('.task[data-task-id]');
   const counter = document.getElementById('taskCounter');
+  const progFill = document.getElementById('progBarFill');
 
-  function loadState() {
+  function loadState(){
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
-    catch(e) { return {}; }
+    catch(e){ return {}; }
   }
-  function saveState(state) {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
+  function saveState(s){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e){}
   }
-  function updateCounter() {
+  function updateProgress(){
     const total = tasks.length;
     const done = document.querySelectorAll('.task.done').length;
+    const pct = total > 0 ? (done/total)*100 : 0;
     if (counter) {
-      const pct = total > 0 ? Math.round((done/total)*100) : 0;
-      counter.innerHTML = '<strong style="color:var(--gold);">' + done + '</strong> de ' + total + ' tarefas concluidas · ' + pct + '%';
+      const pctR = Math.round(pct);
+      counter.innerHTML = '<strong style="color:var(--gold);">' + done + '</strong> de ' + total + ' tarefas concluídas · ' + pctR + '%';
     }
+    if (progFill) progFill.style.width = pct + '%';
   }
 
   const state = loadState();
@@ -1163,13 +1452,102 @@ a { color:inherit; text-decoration:none; }
     t.addEventListener('click', function(e){
       e.stopPropagation();
       this.classList.toggle('done');
-      const newState = loadState();
-      newState[id] = this.classList.contains('done');
-      saveState(newState);
-      updateCounter();
+      const ns = loadState();
+      ns[id] = this.classList.contains('done');
+      saveState(ns);
+      updateProgress();
     });
   });
-  updateCounter();
+  updateProgress();
+
+  /* ===== COUNTER ANIMATION (KPI numbers) ===== */
+  function animateCount(el, target, suffix, prefix, duration){
+    const start = 0;
+    const startTime = performance.now();
+    function step(now){
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const cur = Math.round(start + (target - start) * eased);
+      el.textContent = (prefix||'') + cur.toLocaleString('pt-BR') + (suffix||'');
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = (prefix||'') + target.toLocaleString('pt-BR') + (suffix||'');
+    }
+    requestAnimationFrame(step);
+  }
+  const kpiAnimated = new WeakSet();
+  function tryAnimateKPI(el){
+    if (kpiAnimated.has(el)) return;
+    const t = el.getAttribute('data-count');
+    if (!t) return;
+    kpiAnimated.add(el);
+    const target = parseInt(t,10);
+    const prefix = el.getAttribute('data-prefix') || '';
+    const suffix = el.getAttribute('data-suffix') || '';
+    animateCount(el, target, suffix, prefix, 1400);
+  }
+
+  /* ===== INTERSECTION OBSERVER (reveal + counters) ===== */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        if (e.target.hasAttribute('data-count')) tryAnimateKPI(e.target);
+        e.target.querySelectorAll('[data-count]').forEach(tryAnimateKPI);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal, [data-count], .kpi-card, .fase, .insight-card, .nb-card, .evento, .material-card').forEach(el => {
+    el.classList.add('reveal');
+    io.observe(el);
+  });
+
+  /* ===== SCROLL SPY SIDENAV ===== */
+  const sections = document.querySelectorAll('[data-section], #kpis, #diagnostico');
+  const navLinks = document.querySelectorAll('.sidenav a');
+  function updateSpy(){
+    let cur = '';
+    sections.forEach(s => {
+      const r = s.getBoundingClientRect();
+      if (r.top < 200 && r.bottom > 200) cur = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('data-target') === cur);
+    });
+  }
+  window.addEventListener('scroll', updateSpy, { passive:true });
+  updateSpy();
+
+  /* ===== PWA INSTALL ===== */
+  let deferredPrompt;
+  const hint = document.getElementById('installHint');
+  const installBtn = document.getElementById('installBtn');
+  const dismissedKey = 'cpp-mapa-danilo-install-dismissed';
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (!sessionStorage.getItem(dismissedKey)) {
+      setTimeout(() => hint && hint.classList.add('show'), 12000);
+    }
+  });
+  if (installBtn) installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    sessionStorage.setItem(dismissedKey, '1');
+    hint.classList.remove('show');
+    deferredPrompt = null;
+  });
+  document.querySelector('.install-hint .close-x') && document.querySelector('.install-hint .close-x').addEventListener('click', () => {
+    sessionStorage.setItem(dismissedKey, '1');
+  });
+
+  /* ===== SERVICE WORKER (cache offline) ===== */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(()=>{});
+    });
+  }
 })();
 </script>
 
