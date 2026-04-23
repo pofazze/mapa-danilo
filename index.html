@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Danilo Lopes Coelho — Mentoria CPP</title>
+<meta name="description" content="Mapa de transformacao Dr. Danilo Lopes Coelho — Mentoria Cirurgiao Particular Premium">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-0: #0A0908;
+  --bg-1: #0F0D0B;
+  --bg-2: #1A1410;
+  --bg-3: #221813;
+  --gold: #D4A53C;
+  --gold-2: #E8C870;
+  --gold-3: #F5E0A0;
+  --gold-dark: #8B6B1F;
+  --gold-bg: rgba(212,165,60,0.08);
+  --gold-border: rgba(212,165,60,0.18);
+  --gold-border-strong: rgba(212,165,60,0.35);
+  --white: #E8E4DD;
+  --w90: rgba(232,228,221,0.9);
+  --w70: rgba(232,228,221,0.7);
+  --w50: rgba(232,228,221,0.5);
+  --w30: rgba(232,228,221,0.3);
+  --w15: rgba(232,228,221,0.15);
+  --w08: rgba(232,228,221,0.08);
+  --gray: #9B9690;
+  --green: #4A8B6A;
+  --red: #B85450;
+  --orange: #C4854A;
+  --r-lg: 24px;
+  --r-md: 16px;
+  --r-sm: 10px;
+  --r-xs: 6px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-fast: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg-0);
+  color:var(--white);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  font-feature-settings:'cv11','ss01','ss03';
+}
+h1,h2,h3,h4,h5 { font-family:'Cormorant Garamond',serif; letter-spacing:-0.02em; line-height:1.1; }
+img { display:block; max-width:100%; }
+a { color:inherit; text-decoration:none; }
+
+.wrap { max-width:1180px; margin:0 auto; padding:0 32px; position:relative; }
+.wrap-narrow { max-width:880px; margin:0 auto; padding:0 32px; }
+
+.topnav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:14px 32px;
+  background:rgba(10,9,8,0.7);
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid var(--w08);
+  transition:background .3s var(--ease);
+}
+.topnav-inner {
+  max-width:1180px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+}
+.topnav-brand {
+  display:flex; align-items:center; gap:12px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px; font-weight:600; letter-spacing:0.5px;
+}
+.topnav-logo {
+  width:32px; height:32px;
+  background:url('https://raw.githubusercontent.com/pofazze/cpp-brand-assets/main/cpp-logo.png') center/contain no-repeat;
+  filter:brightness(1.1);
+}
+.topnav-mid {
+  display:none;
+  align-items:center; gap:8px; font-size:13px; color:var(--w70);
+}
+@media(min-width:920px){.topnav-mid{display:flex;}}
+.topnav-mid .pipe { color:var(--w15); margin:0 4px; }
+.topnav-mid .doc-name { color:var(--white); font-weight:500; }
+.topnav-status {
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:11px; padding:5px 12px; border-radius:100px;
+  background:var(--gold-bg); border:1px solid var(--gold-border);
+  color:var(--gold-2); font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+}
+.topnav-status::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--gold); box-shadow:0 0 10px var(--gold);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+.topnav-cta { display:none; }
+@media(min-width:840px){.topnav-cta{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--w70);}}
+
+.hero {
+  min-height:100vh; display:flex; align-items:center; position:relative;
+  overflow:hidden; padding:120px 0 80px;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,165,60,0.10), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(196,133,74,0.06), transparent 60%),
+    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%);
+}
+.hero::before {
+  content:''; position:absolute; inset:0; opacity:0.025;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.hero-inner { max-width:1180px; margin:0 auto; padding:0 32px; position:relative; z-index:2; width:100%; }
+.hero-badge {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:8px 18px; background:var(--gold-bg);
+  border:1px solid var(--gold-border); border-radius:100px;
+  font-size:11px; font-weight:600; color:var(--gold-2);
+  letter-spacing:3px; text-transform:uppercase; margin-bottom:36px;
+}
+.hero-badge .logo-mini {
+  width:18px; height:18px;
+  background:url('https://raw.githubusercontent.com/pofazze/cpp-brand-assets/main/cpp-logo.png') center/contain no-repeat;
+}
+
+.hero-grid {
+  display:grid; grid-template-columns:1.4fr 1fr; gap:64px; align-items:center;
+}
+@media(max-width:920px){.hero-grid{grid-template-columns:1fr;gap:48px;}}
+
+.hero-left h1 { font-size:clamp(48px, 7vw, 92px); font-weight:500; margin-bottom:24px; }
+.hero-left h1 .name {
+  display:block;
+  background:linear-gradient(135deg, var(--gold-3) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  font-style:italic;
+}
+.hero-sub {
+  font-family:'Inter',sans-serif; font-size:18px; color:var(--w70);
+  max-width:540px; margin-bottom:36px; line-height:1.7; font-weight:300;
+}
+.hero-meta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:44px; }
+.hero-meta-pill {
+  padding:7px 14px; background:var(--w08);
+  border:1px solid var(--w15); border-radius:100px;
+  font-size:12px; color:var(--w70);
+}
+.hero-meta-pill strong { color:var(--white); font-weight:600; }
+
+.hero-cta { display:flex; gap:14px; flex-wrap:wrap; }
+.btn {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 28px; font-family:'Inter',sans-serif;
+  font-size:13px; font-weight:600;
+  border-radius:100px; border:1px solid transparent;
+  cursor:pointer; transition:all .3s var(--ease);
+  text-transform:uppercase; letter-spacing:1.5px;
+}
+.btn-primary {
+  background:linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  color:var(--bg-0); border-color:var(--gold);
+}
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(212,165,60,0.3); }
+.btn-ghost { background:transparent; color:var(--white); border-color:var(--w30); }
+.btn-ghost:hover { background:var(--w08); border-color:var(--w50); }
+
+.hero-right { position:relative; }
+.transformation-card {
+  background:linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 100%);
+  border:1px solid var(--gold-border); border-radius:var(--r-lg);
+  padding:36px; position:relative; overflow:hidden;
+}
+.transformation-card::before {
+  content:''; position:absolute; top:-1px; left:-1px; right:-1px; height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.tc-label {
+  font-size:10px; text-transform:uppercase; letter-spacing:3px;
+  color:var(--gold-2); font-weight:700; margin-bottom:24px;
+}
+.tc-stage { display:flex; flex-direction:column; gap:6px; margin-bottom:32px; }
+.tc-stage-label {
+  font-size:11px; text-transform:uppercase; letter-spacing:2px;
+  color:var(--w50); font-weight:500;
+}
+.tc-stage-value {
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px; font-weight:600; line-height:1; color:var(--white);
+}
+.tc-stage-value.gold {
+  background:linear-gradient(135deg, var(--gold-3), var(--gold));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.tc-arrow { display:flex; align-items:center; justify-content:center; margin:8px 0; color:var(--gold); font-size:20px; }
+.tc-meta {
+  padding-top:24px; border-top:1px solid var(--w08);
+  display:flex; justify-content:space-between; font-size:12px;
+}
+.tc-meta-item .lab { color:var(--w50); display:block; margin-bottom:4px; }
+.tc-meta-item .val { color:var(--white); font-weight:600; }
+
+.progress-section {
+  padding:80px 0 60px; background:var(--bg-1);
+  border-top:1px solid var(--w08); border-bottom:1px solid var(--w08);
+}
+.progress-head { text-align:center; margin-bottom:48px; }
+.progress-head .label {
+  font-size:11px; text-transform:uppercase; letter-spacing:3px;
+  color:var(--gold-2); font-weight:600; margin-bottom:14px;
+}
+.progress-head h2 { font-size:clamp(32px,4vw,44px); margin-bottom:0; }
+.timeline {
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:0;
+  position:relative; margin-top:48px;
+}
+@media(max-width:740px){.timeline{grid-template-columns:1fr 1fr;gap:24px;}}
+.timeline::before {
+  content:''; position:absolute; top:24px; left:12%; right:12%; height:1px;
+  background:linear-gradient(90deg, var(--gold) 0%, var(--gold) 25%, var(--w15) 25%, var(--w15) 100%);
+  z-index:0;
+}
+@media(max-width:740px){.timeline::before{display:none;}}
+
+.tl-step { position:relative; z-index:1; text-align:center; padding:0 16px; }
+.tl-dot {
+  width:48px; height:48px; border-radius:50%;
+  background:var(--bg-1); border:2px solid var(--w15);
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 16px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px; font-weight:600; color:var(--w50);
+  transition:all .3s var(--ease);
+}
+.tl-step.done .tl-dot {
+  background:linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-color:var(--gold); color:var(--bg-0);
+  box-shadow:0 0 28px rgba(212,165,60,0.4);
+}
+.tl-step.current .tl-dot {
+  background:var(--bg-1); border-color:var(--gold); color:var(--gold);
+  box-shadow:0 0 28px rgba(212,165,60,0.25);
+  animation:pulseRing 2s infinite;
+}
+@keyframes pulseRing {
+  0%,100%{box-shadow:0 0 28px rgba(212,165,60,0.25);}
+  50%{box-shadow:0 0 40px rgba(212,165,60,0.5);}
+}
+.tl-name { font-size:13px; font-weight:600; color:var(--white); margin-bottom:4px; }
+.tl-date { font-size:11px; color:var(--w50); letter-spacing:0.3px; }
+.tl-step.done .tl-date { color:var(--gold-2); }
+.tl-step.current .tl-date { color:var(--gold); }
+
+.kpi-section { padding:80px 0; }
+.kpi-head { text-align:center; margin-bottom:48px; }
+.kpi-head .label {
+  font-size:11px; text-transform:uppercase; letter-spacing:3px;
+  color:var(--gold-2); font-weight:600; margin-bottom:14px;
+}
+.kpi-head h2 { font-size:clamp(32px,4vw,44px); }
+.kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+@media(max-width:880px){.kpi-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.kpi-grid{grid-template-columns:1fr;}}
+.kpi-card {
+  padding:28px 24px; background:var(--bg-2);
+  border:1px solid var(--w08); border-radius:var(--r-md);
+  transition:all .3s var(--ease); position:relative; overflow:hidden;
+}
+.kpi-card:hover {
+  border-color:var(--gold-border-strong);
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+.kpi-card::after {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity:0; transition:opacity .3s;
+}
+.kpi-card:hover::after { opacity:1; }
+.kpi-label {
+  font-size:11px; text-transform:uppercase; letter-spacing:1.5px;
+  color:var(--w50); margin-bottom:12px; font-weight:500;
+}
+.kpi-value {
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px; font-weight:600; color:var(--white);
+  line-height:1; margin-bottom:8px;
+}
+.kpi-value.gold {
+  background:linear-gradient(135deg, var(--gold-3), var(--gold));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.kpi-trend { font-size:12px; color:var(--w50); display:flex; align-items:center; gap:6px; }
+.kpi-trend.up { color:var(--green); }
+.kpi-trend.warn { color:var(--orange); }
+
+.diag-section { padding:100px 0; background:linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 100%); }
+.section-head { margin-bottom:56px; }
+.section-head .label {
+  font-size:11px; text-transform:uppercase; letter-spacing:3px;
+  color:var(--gold-2); font-weight:600; margin-bottom:14px;
+}
+.section-head h2 { font-size:clamp(36px,5vw,56px); margin-bottom:16px; font-weight:500; }
+.section-head p { font-size:17px; color:var(--w70); max-width:620px; line-height:1.7; font-weight:300; }
+.diag-bars { display:flex; flex-direction:column; gap:0; }
+.diag-row {
+  display:grid; grid-template-columns:1fr 200px 50px; gap:20px;
+  align-items:center; padding:18px 0; border-bottom:1px solid var(--w08);
+}
+.diag-row:last-child { border-bottom:none; }
+.diag-name { font-size:14px; font-weight:500; color:var(--white); }
+.diag-bar { height:6px; background:var(--w08); border-radius:100px; overflow:hidden; position:relative; }
+.diag-fill { height:100%; border-radius:100px; transition:width 1s var(--ease); }
+.diag-fill.low { background:linear-gradient(90deg, var(--red), var(--orange)); }
+.diag-fill.mid { background:linear-gradient(90deg, var(--orange), var(--gold)); }
+.diag-fill.high { background:linear-gradient(90deg, var(--gold), var(--gold-2)); }
+.diag-fill.top { background:linear-gradient(90deg, var(--gold-2), var(--green)); }
+.diag-score {
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px; font-weight:600; text-align:right; color:var(--white);
+}
+.diag-score.c-red { color:var(--red); }
+.diag-score.c-orange { color:var(--orange); }
+.diag-score.c-gold { color:var(--gold); }
+.diag-score.c-green { color:var(--green); }
+@media(max-width:640px){.diag-row{grid-template-columns:1fr 100px 40px;gap:12px;}}
+
+.plano-section { padding:100px 0; }
+.fase {
+  background:var(--bg-2); border:1px solid var(--w08);
+  border-radius:var(--r-md); margin-bottom:14px; overflow:hidden;
+  transition:border-color .3s;
+}
+.fase:hover { border-color:var(--gold-border-strong); }
+.fase-head {
+  display:flex; align-items:center; gap:24px;
+  padding:28px 32px; cursor:pointer; user-select:none;
+}
+.fase-num {
+  flex-shrink:0; width:48px; height:48px; border-radius:50%;
+  background:var(--bg-1); border:1px solid var(--gold-border);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px; font-weight:600; color:var(--gold);
+}
+.fase-titles { flex:1; }
+.fase-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px; font-weight:600; color:var(--white);
+  margin-bottom:4px; line-height:1.2;
+}
+.fase-when {
+  font-size:12px; color:var(--gold-2); letter-spacing:1px;
+  text-transform:uppercase; font-weight:600;
+}
+.fase-toggle {
+  width:36px; height:36px; border-radius:50%;
+  background:var(--w08); display:flex; align-items:center; justify-content:center;
+  font-size:18px; color:var(--w70); transition:all .3s var(--ease);
+}
+.fase-toggle::after { content:'+'; font-weight:300; }
+.fase.open .fase-toggle::after { content:'−'; }
+.fase.open .fase-toggle { background:var(--gold); color:var(--bg-0); }
+.fase-body { max-height:0; overflow:hidden; transition:max-height .5s var(--ease-fast); }
+.fase.open .fase-body { max-height:1500px; }
+.fase-body-inner { padding:0 32px 32px; border-top:1px solid var(--w08); }
+.fase-desc {
+  font-size:15px; color:var(--w70); line-height:1.7;
+  margin:24px 0 28px; max-width:720px;
+}
+.tasks { display:flex; flex-direction:column; gap:0; }
+.task {
+  display:flex; align-items:flex-start; gap:14px;
+  padding:14px 0; border-bottom:1px solid var(--w08);
+}
+.task:last-child { border-bottom:none; }
+.task-check {
+  flex-shrink:0; width:22px; height:22px; border-radius:6px;
+  border:1.5px solid var(--w30); margin-top:1px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; color:transparent; transition:all .2s;
+}
+.task.done .task-check { background:var(--gold); border-color:var(--gold); color:var(--bg-0); }
+.task.done .task-check::before { content:'✓'; }
+.task-content { flex:1; }
+.task-title { font-size:14px; font-weight:600; color:var(--white); margin-bottom:2px; }
+.task-desc { font-size:13px; color:var(--w50); line-height:1.5; }
+
+.sessoes-section { padding:100px 0; background:var(--bg-1); }
+.sessao {
+  background:var(--bg-2); border:1px solid var(--w08);
+  border-radius:var(--r-md); margin-bottom:14px; overflow:hidden;
+}
+.sessao-head {
+  display:grid; grid-template-columns:auto 1fr auto auto;
+  gap:24px; align-items:center;
+  padding:24px 32px; cursor:pointer; user-select:none;
+}
+.sessao-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px; font-weight:600; color:var(--gold); width:40px;
+}
+.sessao-title { font-size:16px; font-weight:600; color:var(--white); }
+.sessao-date { font-size:12px; color:var(--w50); font-feature-settings:'tnum'; }
+.sessao-status {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:5px 12px; border-radius:100px;
+  font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px;
+}
+.sessao-status.done { background:var(--gold-bg); color:var(--gold-2); border:1px solid var(--gold-border); }
+.sessao-status.next { background:rgba(74,139,106,0.1); color:var(--green); border:1px solid rgba(74,139,106,0.3); }
+.sessao-status.pending { background:var(--w08); color:var(--w50); border:1px solid var(--w15); }
+.sessao-body { max-height:0; overflow:hidden; transition:max-height .5s var(--ease-fast); }
+.sessao.open .sessao-body { max-height:2000px; }
+.sessao-body-inner { padding:0 32px 32px; border-top:1px solid var(--w08); }
+.sessao-block { padding:24px 0; border-bottom:1px solid var(--w08); }
+.sessao-block:last-child { border-bottom:none; }
+.sessao-block-label {
+  font-size:11px; text-transform:uppercase; letter-spacing:2px;
+  color:var(--gold-2); font-weight:600; margin-bottom:10px;
+}
+.sessao-block p { font-size:14px; color:var(--w70); line-height:1.7; }
+.sessao-block ul { list-style:none; padding:0; }
+.sessao-block ul li {
+  font-size:14px; color:var(--w70);
+  padding:6px 0; padding-left:18px; position:relative; line-height:1.6;
+}
+.sessao-block ul li::before {
+  content:''; position:absolute; left:0; top:14px;
+  width:6px; height:6px; border-radius:50%; background:var(--gold);
+}
+.sessao-audio {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:10px 18px; border:1px solid var(--gold-border);
+  border-radius:100px; font-size:12px; color:var(--gold-2);
+  text-transform:uppercase; letter-spacing:1.5px; font-weight:600;
+  cursor:pointer; transition:all .3s; margin-top:14px;
+}
+.sessao-audio:hover { background:var(--gold-bg); }
+.sessao-audio::before {
+  content:''; width:0; height:0;
+  border-left:8px solid var(--gold-2);
+  border-top:5px solid transparent; border-bottom:5px solid transparent;
+}
+
+.insights-section { padding:120px 0; }
+.insight-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+@media(max-width:780px){.insight-grid{grid-template-columns:1fr;}}
+.insight-card {
+  padding:36px;
+  background:linear-gradient(135deg, var(--bg-2) 0%, var(--bg-1) 100%);
+  border:1px solid var(--gold-border); border-radius:var(--r-md);
+  position:relative; overflow:hidden;
+}
+.insight-card::before {
+  content:'"'; position:absolute; top:-30px; left:24px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:160px; color:var(--gold); opacity:0.18; line-height:1;
+}
+.insight-card.featured {
+  background:linear-gradient(135deg, rgba(212,165,60,0.08), rgba(196,133,74,0.04));
+  border-color:var(--gold); grid-column:1 / -1;
+  text-align:center; padding:64px 48px;
+}
+.insight-card.featured::before {
+  font-size:200px; left:50%; transform:translateX(-50%); top:-40px;
+}
+.insight-text {
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px; font-weight:500; color:var(--white);
+  line-height:1.4; font-style:italic;
+  margin-bottom:18px; position:relative; z-index:1;
+}
+.insight-card.featured .insight-text {
+  font-size:32px; max-width:720px; margin:0 auto 20px;
+}
+.insight-author {
+  font-size:11px; color:var(--gold-2);
+  letter-spacing:2px; text-transform:uppercase; font-weight:600;
+}
+
+.agenda-section { padding:100px 0; background:var(--bg-1); }
+.agenda-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+@media(max-width:780px){.agenda-grid{grid-template-columns:1fr;}}
+.evento {
+  display:grid; grid-template-columns:80px 1fr auto; gap:24px;
+  align-items:center; padding:24px 28px;
+  background:var(--bg-2); border:1px solid var(--w08);
+  border-radius:var(--r-md); transition:all .3s;
+}
+.evento:hover { border-color:var(--gold-border-strong); transform:translateY(-2px); }
+.evento.urgent { border-color:var(--gold); background:linear-gradient(135deg, rgba(212,165,60,0.08), var(--bg-2)); }
+.evento-data {
+  text-align:center; padding-right:24px;
+  border-right:1px solid var(--w08);
+}
+.evento-dia {
+  font-family:'Cormorant Garamond',serif;
+  font-size:36px; font-weight:600; color:var(--gold); line-height:1;
+}
+.evento-mes {
+  font-size:10px; text-transform:uppercase; letter-spacing:2px;
+  color:var(--w50); margin-top:4px; font-weight:600;
+}
+.evento-info-titulo { font-size:15px; font-weight:600; color:var(--white); margin-bottom:4px; }
+.evento-info-desc { font-size:12px; color:var(--w50); line-height:1.5; }
+.evento-tag {
+  font-size:10px; padding:5px 11px; border-radius:100px;
+  font-weight:700; text-transform:uppercase; letter-spacing:1.5px; white-space:nowrap;
+}
+.evento-tag.coletiva { background:var(--gold-bg); color:var(--gold-2); }
+.evento-tag.individual { background:rgba(74,139,106,0.1); color:var(--green); }
+.evento-tag.imersao { background:rgba(196,133,74,0.1); color:var(--orange); }
+
+.nb-section { padding:100px 0; }
+.nb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:48px; }
+@media(max-width:780px){.nb-grid{grid-template-columns:1fr;}}
+.nb-card {
+  padding:36px 28px;
+  background:linear-gradient(180deg, var(--bg-2) 0%, var(--bg-1) 100%);
+  border:1px solid var(--w08); border-radius:var(--r-md);
+  position:relative; overflow:hidden;
+}
+.nb-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg, var(--gold), var(--gold-dark));
+}
+.nb-when {
+  font-size:11px; text-transform:uppercase; letter-spacing:2px;
+  color:var(--gold-2); font-weight:700; margin-bottom:14px;
+}
+.nb-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px; font-weight:600; color:var(--white);
+  margin-bottom:14px; line-height:1.2;
+}
+.nb-desc { font-size:13px; color:var(--w70); line-height:1.7; }
+
+.mentores-section {
+  padding:120px 0;
+  background:url('https://raw.githubusercontent.com/pofazze/cpp-brand-assets/main/cpp-header-dupla.png') center/cover no-repeat;
+  position:relative; text-align:center;
+  min-height:480px; display:flex; align-items:center;
+}
+.mentores-section::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(10,9,8,0.85) 0%, rgba(10,9,8,0.5) 50%, rgba(10,9,8,0.95) 100%);
+}
+.mentores-content { position:relative; z-index:2; }
+.mentores-label {
+  font-size:11px; text-transform:uppercase; letter-spacing:3px;
+  color:var(--gold-2); font-weight:600; margin-bottom:18px;
+}
+.mentores-content h2 { font-size:clamp(36px,5vw,56px); font-weight:500; margin-bottom:24px; }
+.mentores-content h2 .gold {
+  background:linear-gradient(135deg, var(--gold-3), var(--gold));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.mentores-content p {
+  font-size:18px; color:var(--w70);
+  max-width:680px; margin:0 auto;
+  line-height:1.7; font-weight:300;
+}
+
+.footer { padding:60px 0 40px; border-top:1px solid var(--w08); text-align:center; }
+.footer-logo {
+  width:64px; height:64px;
+  background:url('https://raw.githubusercontent.com/pofazze/cpp-brand-assets/main/cpp-logo.png') center/contain no-repeat;
+  margin:0 auto 20px; opacity:0.7;
+}
+.footer-brand {
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px; font-weight:600; color:var(--gold);
+  letter-spacing:3px; text-transform:uppercase; margin-bottom:14px;
+}
+.footer-info { font-size:13px; color:var(--w50); line-height:1.7; }
+.footer-update {
+  font-size:11px; color:var(--w30); margin-top:18px;
+  letter-spacing:1px; text-transform:uppercase;
+}
+
+@media print {
+  body { background:#fff; color:#000; }
+  .topnav, .insight-card::before, .mentores-section::before { display:none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="topnav-brand">
+      <div class="topnav-logo"></div>
+      <span>Cirurgião Particular Premium</span>
+    </div>
+    <div class="topnav-mid">
+      <span class="doc-name">Dr. Danilo Lopes Coelho</span>
+      <span class="pipe">·</span>
+      <span class="topnav-status">Sessão 01 de 04</span>
+    </div>
+    <div class="topnav-cta">
+      <span style="color:var(--w30);">Atualizado 23/04/2026</span>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <div class="logo-mini"></div>
+      <span>Mentoria CPP · Tier Premium</span>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-left">
+        <h1>Bem-vindo,<br><span class="name">Dr. Danilo</span></h1>
+        <p class="hero-sub">Este é o seu mapa de transformação na Mentoria Cirurgião Particular Premium. Aqui você acompanha sessões, plano de ação, agenda e tudo que combinamos juntos. Atualizado a cada encontro.</p>
+
+        <div class="hero-meta">
+          <span class="hero-meta-pill"><strong>Cirurgia de Quadril</strong></span>
+          <span class="hero-meta-pill"><strong>Goiânia</strong> · GO</span>
+          <span class="hero-meta-pill"><strong>16 anos</strong> de carreira</span>
+          <span class="hero-meta-pill">Início: <strong>22/04/2026</strong></span>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#plano" class="btn btn-primary">Ver Plano de Ação</a>
+          <a href="#agenda" class="btn btn-ghost">Agenda da Mentoria</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="transformation-card">
+          <div class="tc-label">SUA JORNADA · 6 MESES</div>
+          <div class="tc-stage">
+            <span class="tc-stage-label">HOJE</span>
+            <span class="tc-stage-value">R$ 65k<span style="font-size:20px;color:var(--w50);">/mês</span></span>
+          </div>
+          <div class="tc-arrow">↓</div>
+          <div class="tc-stage">
+            <span class="tc-stage-label">EM 6 MESES</span>
+            <span class="tc-stage-value gold">R$ 120k<span style="font-size:20px;color:var(--w50);">/mês</span></span>
+          </div>
+          <div class="tc-meta">
+            <div class="tc-meta-item"><span class="lab">META 3M</span><span class="val">R$ 100k</span></div>
+            <div class="tc-meta-item"><span class="lab">CIRURGIA ALVO</span><span class="val">R$ 25-30k</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="progress-section">
+  <div class="wrap">
+    <div class="progress-head">
+      <div class="label">Sua jornada</div>
+      <h2>Onboarding + 3 reuniões individuais</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-step done"><div class="tl-dot">✓</div><div class="tl-name">Onboarding</div><div class="tl-date">22/04/2026</div></div>
+      <div class="tl-step current"><div class="tl-dot">2</div><div class="tl-name">Reunião 1</div><div class="tl-date">A agendar</div></div>
+      <div class="tl-step"><div class="tl-dot">3</div><div class="tl-name">Reunião 2</div><div class="tl-date">—</div></div>
+      <div class="tl-step"><div class="tl-dot">4</div><div class="tl-name">Reunião 3</div><div class="tl-date">—</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="kpi-section">
+  <div class="wrap">
+    <div class="kpi-head">
+      <div class="label">Visão Geral</div>
+      <h2>Seus números na mentoria</h2>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Faturamento Atual</div>
+        <div class="kpi-value">R$ 65k</div>
+        <div class="kpi-trend">por mês · linha de base</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Meta 3 Meses</div>
+        <div class="kpi-value gold">R$ 100k</div>
+        <div class="kpi-trend up">+54% vs hoje</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Meta 6 Meses</div>
+        <div class="kpi-value gold">R$ 120k</div>
+        <div class="kpi-trend up">+85% vs hoje</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Próxima Sessão</div>
+        <div class="kpi-value" style="font-size:28px;">25/04 · 18h</div>
+        <div class="kpi-trend warn">Aula coletiva — Sexta</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diag-section">
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <div class="label">Diagnóstico · Sessão 01</div>
+      <h2>Onde você está hoje</h2>
+      <p>Termômetro de 10 dimensões mapeadas no onboarding. As barras evoluem a cada reunião conforme o plano avança.</p>
+    </div>
+
+    <div class="diag-bars">
+      <div class="diag-row"><span class="diag-name">Competência cirúrgica (quadril)</span><div class="diag-bar"><div class="diag-fill top" style="width:100%"></div></div><span class="diag-score c-green">10</span></div>
+      <div class="diag-row"><span class="diag-name">Capacidade de execução</span><div class="diag-bar"><div class="diag-fill top" style="width:100%"></div></div><span class="diag-score c-green">10</span></div>
+      <div class="diag-row"><span class="diag-name">Já desvia convênio → particular</span><div class="diag-bar"><div class="diag-fill high" style="width:70%"></div></div><span class="diag-score c-gold">7</span></div>
+      <div class="diag-row"><span class="diag-name">Abertura para conteúdo digital</span><div class="diag-bar"><div class="diag-fill high" style="width:90%"></div></div><span class="diag-score c-green">9</span></div>
+      <div class="diag-row"><span class="diag-name">Foco e concentração de fontes</span><div class="diag-bar"><div class="diag-fill low" style="width:25%"></div></div><span class="diag-score c-red">2</span></div>
+      <div class="diag-row"><span class="diag-name">Posicionamento de preço</span><div class="diag-bar"><div class="diag-fill low" style="width:15%"></div></div><span class="diag-score c-red">1</span></div>
+      <div class="diag-row"><span class="diag-name">Estrutura de time / suporte</span><div class="diag-bar"><div class="diag-fill low" style="width:15%"></div></div><span class="diag-score c-red">1</span></div>
+      <div class="diag-row"><span class="diag-name">Presença digital ativa</span><div class="diag-bar"><div class="diag-fill low" style="width:10%"></div></div><span class="diag-score c-red">1</span></div>
+      <div class="diag-row"><span class="diag-name">Marketing estruturado</span><div class="diag-bar"><div class="diag-fill low" style="width:5%"></div></div><span class="diag-score c-red">0</span></div>
+      <div class="diag-row"><span class="diag-name">Prova social organizada</span><div class="diag-bar"><div class="diag-fill low" style="width:15%"></div></div><span class="diag-score c-red">1</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="plano-section" id="plano">
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <div class="label">Plano de Transformação</div>
+      <h2>As 6 fases da sua jornada</h2>
+      <p>Sequência clara, com responsável e prazo. Cada fase abre para mostrar o detalhe das ações combinadas. Atualizado a cada sessão.</p>
+    </div>
+
+    <div class="fase open">
+      <div class="fase-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="fase-num">1</div>
+        <div class="fase-titles">
+          <div class="fase-title">Fechar Clínica Regen</div>
+          <div class="fase-when">Esta semana · antes de 01/05</div>
+        </div>
+        <div class="fase-toggle"></div>
+      </div>
+      <div class="fase-body"><div class="fase-body-inner">
+        <p class="fase-desc">Centralizar todo o atendimento particular numa clínica dedicada. Rogério Amaral já está alinhado e contando contigo. Esta é a porta para o ticket maior.</p>
+        <div class="tasks">
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Confirmar data de início com Rogério</div><div class="task-desc">Idealmente 01/05/2026, com pacto explícito.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Compartilhar Instagram da Regen no grupo CPP</div><div class="task-desc">Para Patrick e Matheus avaliarem o posicionamento da clínica.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Alinhar consulta inicial em R$ 800</div><div class="task-desc">Valor combinado, com possibilidade de evolução.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Direcionar 100% dos particulares para a Regen</div><div class="task-desc">Convênio segue no Bench Care · particular fica concentrado num só lugar.</div></div></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="fase">
+      <div class="fase-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="fase-num">2</div>
+        <div class="fase-titles"><div class="fase-title">Contratar Secretária Particular</div><div class="fase-when">Esta semana · começar hoje</div></div>
+        <div class="fase-toggle"></div>
+      </div>
+      <div class="fase-body"><div class="fase-body-inner">
+        <p class="fase-desc">A secretária particular libera você do WhatsApp pessoal e cria o canal profissional de atendimento. É o pilar que sustenta tudo que vem depois.</p>
+        <div class="tasks">
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Receber script de contratação + teste comportamental</div><div class="task-desc">Patrick envia o material padrão da mentoria.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Buscar candidatas (indicação + post no Instagram)</div><div class="task-desc">Estratégia que costuma trazer 30-50 indicações qualificadas.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Aplicar teste de perfil comportamental</div><div class="task-desc">Perfil ideal: influente + analítica.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Patrick + Matheus analisam resultado em conjunto</div><div class="task-desc">Decisão alinhada antes da contratação.</div></div></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="fase">
+      <div class="fase-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="fase-num">3</div>
+        <div class="fase-titles"><div class="fase-title">Sair do UGOL · Concentrar Fogo</div><div class="fase-when">Maio 2026</div></div>
+        <div class="fase-toggle"></div>
+      </div>
+      <div class="fase-body"><div class="fase-body-inner">
+        <p class="fase-desc">Liberar 1.5 dia da semana para focar no particular, na Regen e na sua presença digital. Cristianópolis e Estado seguem por enquanto pela baixa carga real.</p>
+        <div class="tasks">
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Comunicar saída do UGOL formalmente</div><div class="task-desc">Aviso respeitoso, sem queimar pontes.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Manter Cristianópolis e Estado/Regulação</div><div class="task-desc">Renda fixa de baixa carga garante tranquilidade durante a transição.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Reorganizar agenda semanal pós-saída</div><div class="task-desc">Bloquear janelas para conteúdo, estudo e descanso.</div></div></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="fase">
+      <div class="fase-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="fase-num">4</div>
+        <div class="fase-titles"><div class="fase-title">Script de Conversão + Ticket Cirúrgico</div><div class="fase-when">Sexta 25/04 · aula coletiva</div></div>
+        <div class="fase-toggle"></div>
+      </div>
+      <div class="fase-body"><div class="fase-body-inner">
+        <p class="fase-desc">Você já desvia convênio → particular naturalmente. O script formal multiplica o resultado e dá segurança para subir o ticket cirúrgico de forma escalonada.</p>
+        <div class="tasks">
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Participar da aula coletiva sexta-feira 18h</div><div class="task-desc">Tema: desviar convênio para particular. Case Leonidas.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Subir honorário cirúrgico para R$ 8k imediato</div><div class="task-desc">Próxima conversa de cirurgia já com o novo valor.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Reportar primeiro paciente desviado no grupo</div><div class="task-desc">Compartilhar o resultado com Patrick, Matheus e a turma.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Estruturar proposta para R$ 25-30k na Regen</div><div class="task-desc">Paciente da Regen já vem buscando particular — ticket maior é natural.</div></div></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="fase">
+      <div class="fase-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="fase-num">5</div>
+        <div class="fase-titles"><div class="fase-title">Presença Digital · Instagram</div><div class="fase-when">Junho 2026</div></div>
+        <div class="fase-toggle"></div>
+      </div>
+      <div class="fase-body"><div class="fase-body-inner">
+        <p class="fase-desc">Você tem facilidade natural com câmera (raro entre cirurgiões). É hora de aparecer com método: casos cirúrgicos, autoridade, prova social. Não é virar influencer — é ser encontrável pelos pacientes que precisam de você.</p>
+        <div class="tasks">
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Atualizar bio + foto profissional</div><div class="task-desc">Cirurgião de quadril, Goiânia, CRM. Direto e com autoridade.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Gravar 2 reels por semana com qualidade</div><div class="task-desc">Casos de quadril, antes/depois, dicas profissionais.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Coletar 5 depoimentos de pacientes operados</div><div class="task-desc">Curtos, com o celular mesmo. Prova social vale ouro.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Iniciar tráfego pago modesto</div><div class="task-desc">Após estrutura rodando: secretária + Instagram + leads convertendo.</div></div></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="fase">
+      <div class="fase-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="fase-num">6</div>
+        <div class="fase-titles"><div class="fase-title">Imersão + Bater Meta de R$ 100k</div><div class="fase-when">Julho · Agosto 2026</div></div>
+        <div class="fase-toggle"></div>
+      </div>
+      <div class="fase-body"><div class="fase-body-inner">
+        <p class="fase-desc">Mês 3 da mentoria. Imersão presencial do Grupo Acelerador. Bater os primeiros R$ 100k/mês e preparar o terreno para os R$ 120k em outubro.</p>
+        <div class="tasks">
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Bater R$ 100k/mês (mês 3)</div><div class="task-desc">UGOL fora + Regen ativa + 4-5 cirurgias particulares com novo ticket.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Participar da Imersão 06-07/Ago</div><div class="task-desc">Grupo Acelerador · 600 cirurgiões · networking + casos avançados.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Avaliar Cristianópolis (terceirizar ou abandonar)</div><div class="task-desc">Se o particular já compensar, simplifica a operação.</div></div></div>
+          <div class="task"><div class="task-check"></div><div class="task-content"><div class="task-title">Bater R$ 120k/mês (mês 6)</div><div class="task-desc">Regen consolidada · marketing gerando leads · equipe estruturada.</div></div></div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sessoes-section" id="sessoes">
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <div class="label">Histórico de Sessões</div>
+      <h2>Suas reuniões individuais</h2>
+      <p>Onboarding + 3 reuniões individuais ao longo da mentoria. Cada sessão tem áudio gravado, decisões e próximos passos registrados aqui.</p>
+    </div>
+
+    <div class="sessao open">
+      <div class="sessao-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="sessao-num">01</div>
+        <div class="sessao-title">Onboarding · Diagnóstico inicial</div>
+        <div class="sessao-date">22 abril · 46 min</div>
+        <div class="sessao-status done">Realizada</div>
+      </div>
+      <div class="sessao-body"><div class="sessao-body-inner">
+        <div class="sessao-block">
+          <div class="sessao-block-label">Tema da sessão</div>
+          <p>Mapeamento completo da operação atual: composição de renda, clínicas, time, presença digital, ambições. Construção do plano de transformação para os próximos 6 meses.</p>
+        </div>
+        <div class="sessao-block">
+          <div class="sessao-block-label">Decisões tomadas</div>
+          <ul>
+            <li>Centralizar todo particular na Clínica Regen (início maio)</li>
+            <li>Sair do UGOL em maio</li>
+            <li>Contratar secretária particular como prioridade absoluta</li>
+            <li>Subir honorário cirúrgico de R$ 3-4k para R$ 8k imediato, com escalada para R$ 12-15k e depois R$ 25-30k</li>
+            <li>Consulta na Regen começa em R$ 800</li>
+            <li>Participar da aula coletiva 25/04 sobre desviar convênio para particular</li>
+            <li>Confirmar presença no Desafio Online 04-07/05 às 20h</li>
+          </ul>
+        </div>
+        <div class="sessao-block">
+          <div class="sessao-block-label">Próximos passos</div>
+          <ul>
+            <li>Fechar Regen com Rogério (data + Instagram da clínica no grupo)</li>
+            <li>Iniciar processo seletivo da secretária esta semana</li>
+            <li>Reportar primeiro paciente desviado para particular semana que vem</li>
+          </ul>
+        </div>
+        <a class="sessao-audio">Áudio da sessão (46 min)</a>
+      </div></div>
+    </div>
+
+    <div class="sessao">
+      <div class="sessao-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="sessao-num">02</div>
+        <div class="sessao-title">Reunião 1 · A agendar</div>
+        <div class="sessao-date">—</div>
+        <div class="sessao-status next">Próxima</div>
+      </div>
+      <div class="sessao-body"><div class="sessao-body-inner">
+        <div class="sessao-block"><p>A próxima reunião individual será agendada após o Desafio Online (04-07/05). Foco previsto: revisão do que foi executado nas duas primeiras semanas, ajustes e próxima etapa do plano.</p></div>
+      </div></div>
+    </div>
+
+    <div class="sessao">
+      <div class="sessao-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="sessao-num">03</div>
+        <div class="sessao-title">Reunião 2 · A agendar</div>
+        <div class="sessao-date">—</div>
+        <div class="sessao-status pending">Pendente</div>
+      </div>
+    </div>
+
+    <div class="sessao">
+      <div class="sessao-head" onclick="this.parentElement.classList.toggle('open')">
+        <div class="sessao-num">04</div>
+        <div class="sessao-title">Reunião 3 · A agendar</div>
+        <div class="sessao-date">—</div>
+        <div class="sessao-status pending">Pendente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="insights-section">
+  <div class="wrap-narrow">
+    <div class="section-head" style="text-align:center;">
+      <div class="label">Insights da Mentoria</div>
+      <h2>Frases que ficam</h2>
+      <p style="margin:0 auto;">Princípios trabalhados nas sessões. Volte aqui sempre que precisar de combustível.</p>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight-card featured">
+        <p class="insight-text">É dever seu essa pessoa te encontrar. Existem pacientes que precisam operar com você. Se eles não te acharem, vão operar com cirurgião pior — e parte da culpa é sua.</p>
+        <div class="insight-author">Patrick Suyti · Onboarding 22/04</div>
+      </div>
+      <div class="insight-card">
+        <p class="insight-text">Quando eu cobrava 12, achava 25 desconfortável. Quando comecei a cobrar 25, achava 40 desconfortável. Hoje cobro 50. O conforto é iterativo — não absoluto.</p>
+        <div class="insight-author">Dr. Matheus Jeronimo</div>
+      </div>
+      <div class="insight-card">
+        <p class="insight-text">Você não precisa ser motivado a ganhar mais. Você já sabe que é bom — 16 anos, 18 próteses em 10 dias. Precisa de permissão psicológica para ser encontrado.</p>
+        <div class="insight-author">Patrick Suyti</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="agenda-section" id="agenda">
+  <div class="wrap-narrow">
+    <div class="section-head">
+      <div class="label">Agenda da Mentoria</div>
+      <h2>Próximos compromissos</h2>
+      <p>Aulas coletivas, desafios e imersões. Bloqueia na sua agenda — é onde a transformação acontece.</p>
+    </div>
+
+    <div class="agenda-grid">
+      <div class="evento urgent">
+        <div class="evento-data"><div class="evento-dia">25</div><div class="evento-mes">Abr</div></div>
+        <div class="evento-info">
+          <div class="evento-info-titulo">Aula coletiva · Desviar convênio para particular</div>
+          <div class="evento-info-desc">Sexta 18h · case Leonidas · ao vivo no Zoom</div>
+        </div>
+        <span class="evento-tag coletiva">Coletiva</span>
+      </div>
+
+      <div class="evento urgent">
+        <div class="evento-data"><div class="evento-dia">04</div><div class="evento-mes">Mai</div></div>
+        <div class="evento-info">
+          <div class="evento-info-titulo">Desafio Online · Dia 1</div>
+          <div class="evento-info-desc">Segunda 20h · 4 dias intensivos · Premium</div>
+        </div>
+        <span class="evento-tag coletiva">Coletiva</span>
+      </div>
+
+      <div class="evento">
+        <div class="evento-data"><div class="evento-dia">05</div><div class="evento-mes">Mai</div></div>
+        <div class="evento-info">
+          <div class="evento-info-titulo">Desafio Online · Dia 2</div>
+          <div class="evento-info-desc">Terça 20h · Vendas + posicionamento</div>
+        </div>
+        <span class="evento-tag coletiva">Coletiva</span>
+      </div>
+
+      <div class="evento">
+        <div class="evento-data"><div class="evento-dia">06</div><div class="evento-mes">Mai</div></div>
+        <div class="evento-info">
+          <div class="evento-info-titulo">Desafio Online · Dia 3</div>
+          <div class="evento-info-desc">Quarta 20h · Marketing e captação</div>
+        </div>
+        <span class="evento-tag coletiva">Coletiva</span>
+      </div>
+
+      <div class="evento">
+        <div class="evento-data"><div class="evento-dia">07</div><div class="evento-mes">Mai</div></div>
+        <div class="evento-info">
+          <div class="evento-info-titulo">Desafio Online · Dia 4 · Pitch</div>
+          <div class="evento-info-desc">Quinta 20h · Encerramento + ofertas</div>
+        </div>
+        <span class="evento-tag coletiva">Coletiva</span>
+      </div>
+
+      <div class="evento">
+        <div class="evento-data"><div class="evento-dia">26</div><div class="evento-mes">Mai</div></div>
+        <div class="evento-info">
+          <div class="evento-info-titulo">Sessões coletivas semanais</div>
+          <div class="evento-info-desc">Toda segunda 20h · começa após o Desafio</div>
+        </div>
+        <span class="evento-tag coletiva">Coletiva</span>
+      </div>
+
+      <div class="evento">
+        <div class="evento-data"><div class="evento-dia">06</div><div class="evento-mes">Ago</div></div>
+        <div class="evento-info">
+          <div class="evento-info-titulo">Imersão Grupo Acelerador · Dia 1</div>
+          <div class="evento-info-desc">Presencial · 600 cirurgiões · networking + casos</div>
+        </div>
+        <span class="evento-tag imersao">Imersão</span>
+      </div>
+
+      <div class="evento">
+        <div class="evento-data"><div class="evento-dia">07</div><div class="evento-mes">Ago</div></div>
+        <div class="evento-info">
+          <div class="evento-info-titulo">Imersão Grupo Acelerador · Dia 2</div>
+          <div class="evento-info-desc">Presencial · encerramento + planejamento</div>
+        </div>
+        <span class="evento-tag imersao">Imersão</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nb-section">
+  <div class="wrap-narrow">
+    <div class="section-head" style="text-align:center;">
+      <div class="label">Foco do Momento</div>
+      <h2>Sua próxima batalha</h2>
+      <p style="margin:0 auto;">Onde você precisa colocar a energia agora. Sem dispersão — três frentes claras.</p>
+    </div>
+
+    <div class="nb-grid">
+      <div class="nb-card">
+        <div class="nb-when">Esta semana</div>
+        <div class="nb-title">Fechar Regen + Secretária</div>
+        <div class="nb-desc">Confirmar data com Rogério e iniciar processo seletivo da secretária particular. As duas primícias da operação.</div>
+      </div>
+      <div class="nb-card">
+        <div class="nb-when">Esta quinzena</div>
+        <div class="nb-title">Aula sexta + 1º desvio</div>
+        <div class="nb-desc">Participar da aula coletiva 25/04 e aplicar o script no consultório. Reportar o primeiro paciente desviado para particular no grupo CPP.</div>
+      </div>
+      <div class="nb-card">
+        <div class="nb-when">Próximo mês</div>
+        <div class="nb-title">Abrir a Regen + sair do UGOL</div>
+        <div class="nb-desc">01/05 começa a era nova. Particular centralizado na Regen, UGOL fora, agenda reorganizada para o foco no premium.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mentores-section">
+  <div class="mentores-content wrap">
+    <div class="mentores-label">Seus mentores</div>
+    <h2>Patrick Suyti · <span class="gold">Dr. Matheus Jeronimo</span></h2>
+    <p>Sócios 50/50 da Mentoria CPP. Patrick conduz estratégia comercial, posicionamento e mentalidade. Matheus traz a visão médica, técnica de vendas no consultório e referência viva do que é possível em cirurgia particular premium.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo"></div>
+  <div class="footer-brand">Cirurgião Particular Premium</div>
+  <div class="footer-info">
+    <div>Mapa do Dr. Danilo Lopes Coelho · Tier Premium</div>
+    <div>Patrick Suyti · Dr. Matheus Jeronimo · 2026</div>
+  </div>
+  <div class="footer-update">Atualizado em 23/04/2026 · próxima revisão após Reunião 1</div>
+</footer>
+
+</body>
+</html>
